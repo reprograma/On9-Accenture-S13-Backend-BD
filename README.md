@@ -17,6 +17,6 @@ Aprendemos sobre requisições assincronas, promisses e transformamos nosso to-d
 A Semana 11 teve como principal exercicio extender o CRUD da antiga to-do-list que utilizava o arquivo Json. Como entregável desejo obter o mesmo backend porém com todas as atividades da Semana
 11 sendo consultadas no Banco de dados. Caso seja necessário crie models e se sinta livre com as consultas.
 
-## Bonus
+## Bônus
 
-entregar todas as integrações com o máximo de validação do dados possível!!!!!
+Entregar todas as integrações com o máximo de validação do dados possível!!!!!
