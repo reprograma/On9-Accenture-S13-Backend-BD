@@ -5,6 +5,12 @@ const controller = require("../controllers/toDoController")
 
 router.get("/", controller.getAll)
 
+router.get("/concluidas", controller.getCompleted)
+
+router.get("/inconcluidas", controller.getUncompleted)
+
+router.get("/:id", controller.getId)
+
 router.post("/cadastro", controller.criarTarefa)
 
 router.put("/editar/:id", controller.atualizarTarefa)
