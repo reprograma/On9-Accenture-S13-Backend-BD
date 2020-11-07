@@ -1,0 +1,26 @@
+{
+  "name": "On9-Accenture-S13-Backend-BD",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anareisier/On9-Accenture-S13-Backend-BD.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anareisier/On9-Accenture-S13-Backend-BD/issues"
+  },
+  "homepage": "https://github.com/anareisier/On9-Accenture-S13-Backend-BD#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.13",
+    "nodemon": "^2.0.6"
+  }
+}
