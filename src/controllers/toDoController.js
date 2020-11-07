@@ -10,6 +10,32 @@ const getAll = (request, response)=>{
         .catch(err => next(err));
 }
 
+const getById = (request, response) =>{
+    const { id } = request.params 
+
+    Task.findById(id)
+        .then((tasks)=>{
+            response.status(200).json(tasks);
+        })
+        .catch(err => {throw new Error(err)});
+}
+
+const getConcluidas = (request, response) =>{
+    Task.find({ concluido: true})
+        .then((tasks)=>{
+            response.status(200).send(tasks);
+        })
+        .catch(err => next (err));
+}
+
+const getNaoConcluidas = (request, response) =>{
+    Task.find({ concluido: false})
+        .then((tasks) =>{
+            response.status(200).send(tasks);
+        })
+        .catch(err => next (err));
+}
+
 const criarTarefa = (request, response)=>{
     let { descricao, nomeColaborador } = request.body
 
@@ -57,6 +83,29 @@ const concluirTarefa = (request, response)=>{
 
 }
 
+const corrigirResponsavel = (request, response) =>{
+    const { id } = request.params
+    const { nomeColaborador } = request.body
+
+    Task.findById(id)
+        .then((task) =>{
+            if (task.concluido == false) {
+                Task.findByIdAndUpdate(id, {$set: { nomeColaborador: nomeColaborador }})
+                    .then((task)  =>{
+                        response.status(200).json({ message: `${request.params.id} o colaborador foi atualizado`});
+            })
+            
+                    .catch((err) => next(err));
+            
+            }  else {
+                response.status(400).json({ message: `${request.params.id} cannot be updated because it's already finished`});
+            }
+        
+        })
+        .catch(err => { throw new Errow(err) })
+    } 
+    
+
 const deletarTarefa = (request, response)=>{
     const { id } = request.params
     
@@ -71,11 +120,13 @@ const deletarTarefa = (request, response)=>{
 
 module.exports ={
     getAll,
+    getById,
+    getConcluidas,
+    getNaoConcluidas,
     criarTarefa,
+    corrigirResponsavel,
     deletarTarefa,
     atualizarTarefa,
     concluirTarefa
 }
-
-
 
