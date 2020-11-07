@@ -10,6 +10,15 @@ const getAll = (request, response)=>{
         .catch(err => next(err));
 }
 
+const getById = (request, response)=>{
+    const { id } = request.params
+    Task.findById(id)
+        .then((res) => {
+        response.status(200).json(res);
+        })
+        .catch(err => next(err));
+}
+
 const criarTarefa = (request, response)=>{
     let { descricao, nomeColaborador } = request.body
 
@@ -44,8 +53,8 @@ const atualizarTarefa = (request, response) =>{
 }
 
 const concluirTarefa = (request, response)=>{
-    const { id } = request.params //pegando o valor do ID mandado na URL
-    const { concluido } = request.body //pegando o valor de "concluido" enviado no Body
+    const { id } = request.params
+    const { concluido } = request.body
 
     Task.findByIdAndUpdate(id, { $set: { concluido }})
         .then((task) => {
@@ -71,6 +80,7 @@ const deletarTarefa = (request, response)=>{
 
 module.exports ={
     getAll,
+    getById,
     criarTarefa,
     deletarTarefa,
     atualizarTarefa,
