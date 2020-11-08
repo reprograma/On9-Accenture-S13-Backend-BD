@@ -31,11 +31,12 @@ const atualizarTarefa = (request, response) => {
   const { id } = request.params; //pega o ID na URL
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
+    // verifica se o valor passado é um ID e, se é válido no BD
     response.status(400).json({ message: "Specified id is not valid" });
     return;
   }
 
-  Task.findByIdAndUpdate(id, request.body)
+  Task.findByIdAndUpdate(id, request.body) // método que encontra e atualiza por ID
     .then(() => {
       response
         .status(200)
@@ -50,7 +51,7 @@ const concluirTarefa = (request, response) => {
   const { id } = request.params; //pegando o valor do ID mandado na URL
   const { concluido } = request.body; //pegando o valor de "concluido" enviado no Body
 
-  Task.findByIdAndUpdate(id, { $set: { concluido } })
+  Task.findByIdAndUpdate(id, { $set: { concluido } }) // método que encontra e atualiza por ID
     .then((task) => {
       response
         .status(200)
