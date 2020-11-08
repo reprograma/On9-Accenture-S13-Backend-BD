@@ -5,12 +5,20 @@ const controller = require("../controllers/toDoController")
 
 router.get("/", controller.getAll)
 
-router.post("/cadastro", controller.criarTarefa)
+router.get("/:id", controller.getById)
 
-router.put("/editar/:id", controller.atualizarTarefa)
+router.get("/concluidas", controller.getCompletedTasks)
 
-router.patch("/naoconcluidas/:id", controller.concluirTarefa)
+router.get("/naoconcluidas", controller.getUncompletedTasks)
 
-router.delete("/:id", controller.deletarTarefa)
+router.post("/cadastro", controller.createTask)
+
+router.put("/editar/:id", controller.updateTask)
+
+router.patch("/naoconcluidas/:id", controller.finishTask)
+
+router.patch("/responsavel/:id", controller.updateCollaborator)
+
+router.delete("/:id", controller.deleteTask)
 
 module.exports = router
