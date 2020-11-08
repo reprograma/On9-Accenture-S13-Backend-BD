@@ -10,6 +10,34 @@ const getAll = (request, response) => {
     .catch((err) => next(err));
 };
 
+const getById = (request, response) => {
+  const { id } = request.params;
+
+  Task.findById(id)
+    .then((tasks) => {
+      response.status(200).json(tasks);
+    })
+    .catch((err) => next(err));
+};
+
+const getConcluidas = (request, response) => {
+  Task.find({ concluido: true })
+
+    .then((tasks) => {
+      response.status(200).json(tasks);
+    })
+    .catch((err) => next(err));
+};
+
+const getPendentes = (request, response) => {
+  Task.find({ concluido: false })
+
+    .then((tasks) => {
+      response.status(200).json(tasks);
+    })
+    .catch((err) => next(err));
+};
+
 const criarTarefa = (request, response) => {
   let { descricao, nomeColaborador } = request.body;
 
@@ -62,6 +90,21 @@ const concluirTarefa = (request, response) => {
     });
 };
 
+const mudarResponsavel = (request, response) => {
+  const { id } = request.params; //pegando o valor do ID mandado na URL
+  const { nomeColaborador } = request.body; //pegando o valor de "nomeColaborador" enviado no Body
+
+  Task.findByIdAndUpdate(id, { $set: { nomeColaborador } }) // método que encontra e atualiza por ID
+    .then((task) => {
+      response
+        .status(200)
+        .json({ message: `${request.params.id} responsável alterado.` });
+    })
+    .catch((err) => {
+      response.json(err);
+    });
+};
+
 const deletarTarefa = (request, response) => {
   const { id } = request.params;
 
@@ -76,8 +119,12 @@ const deletarTarefa = (request, response) => {
 
 module.exports = {
   getAll,
+  getById,
+  getConcluidas,
+  getPendentes,
   criarTarefa,
   deletarTarefa,
   atualizarTarefa,
+  mudarResponsavel,
   concluirTarefa,
 };
