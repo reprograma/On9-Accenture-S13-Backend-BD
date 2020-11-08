@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/ToDoList", { //define o nome da database
+mongoose.connect("mongodb://localhost/ToDoList", { //define o nome da database que vai ser criada no Mongodb
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
