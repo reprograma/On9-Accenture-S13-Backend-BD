@@ -1,0 +1,27 @@
+{
+  "name": "on9-accenture-s13-backend-bd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "init": "^0.1.2",
+    "mongoose": "^5.10.13",
+    "nodemon": "^2.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariana-franca/On9-Accenture-S13-Backend-BD.git"
+  },
+  "author": "Mariana Franca",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mariana-franca/On9-Accenture-S13-Backend-BD/issues"
+  },
+  "homepage": "https://github.com/mariana-franca/On9-Accenture-S13-Backend-BD#readme"
+}
