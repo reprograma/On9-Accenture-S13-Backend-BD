@@ -1,14 +1,16 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const {Schema} = mongoose;
+const { Schema } = mongoose;
 
-const userSchema = new Schema({
-    concluido: {type: Boolean, default: false},
+const userSchema = new Schema(
+  {
+    concluido: { type: Boolean, default: false },
     descricao: String,
-    nomeColaborador: {type: String, require: true},
-},
-{timestamps: true});
+    nomeColaborador: { type: String, require: true },
+  },
+  { timestamps: true }
+); //data de criação e atualização
 
-const Tarefas = mongoose.model('Tarefas', userSchema);
+const Tarefas = mongoose.model("Tarefas", userSchema);
 
 module.exports = Tarefas;
